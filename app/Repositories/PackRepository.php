@@ -24,4 +24,9 @@ class PackRepository implements PackRepositoryInterface
 
         return $pack;
     }
+
+    public function getSubTotalByPackIds(array $order_packs): float
+    {
+        return Pack::query()->whereIn('pack_id', $order_packs)->sum('pack_price');
+    }
 }

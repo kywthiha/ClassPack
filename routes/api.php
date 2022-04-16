@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PackController;
 use App\Http\Controllers\PromoCodeController;
 use App\Http\Controllers\UserController;
@@ -41,6 +42,10 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::group(['prefix' => 'promo-code','as'=>'promo_code.'], function () {
         Route::post('/check', [PromoCodeController::class, 'check'])->name('check');
+    });
+
+    Route::group(['prefix' => 'order','as'=>'order.'], function () {
+        Route::post('/', [OrderController::class, 'store'])->name('store');
     });
 
 });

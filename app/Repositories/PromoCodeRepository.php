@@ -11,4 +11,9 @@ class PromoCodeRepository implements PromoCodeRepositoryInterface
     {
         return PromoCode::query()->where('code', $code)->first();
     }
+
+    public function getPromoCodeByid(int $id): ?PromoCode
+    {
+        return PromoCode::query()->find($id);
+    }
 }

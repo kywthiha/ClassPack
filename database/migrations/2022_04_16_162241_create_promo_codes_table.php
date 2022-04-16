@@ -18,7 +18,7 @@ class CreatePromoCodesTable extends Migration
             $table->string('code');
             $table->text('description')->nullable();
             $table->float('discount')->default(0);
-            $table->integer('apply_count')->nullable();
+            $table->integer('apply_count')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

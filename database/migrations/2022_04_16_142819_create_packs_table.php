@@ -30,6 +30,7 @@ class CreatePacksTable extends Migration
             $table->float('estimate_price')->default(0);
             $table->softDeletes();
             $table->timestamps();
+            $table->index('disp_order');
         });
     }
 
