@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PackController;
+use App\Http\Controllers\PromoCodeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::group(['prefix' => 'pack','as'=>'pack.'], function () {
         Route::get('/', [PackController::class, 'index'])->name('index');
         Route::get('/{pack}', [PackController::class, 'show'])->name('show');
+    });
+
+    Route::group(['prefix' => 'promo-code','as'=>'promo_code.'], function () {
+        Route::post('/check', [PromoCodeController::class, 'check'])->name('check');
     });
 
 });

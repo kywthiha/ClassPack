@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Interfaces\PackRepositoryInterface;
+use App\Interfaces\PromoCodeRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
 use App\Repositories\PackRepository;
+use App\Repositories\PromoCodeRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,6 +22,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
 
         $this->app->bind(PackRepositoryInterface::class, PackRepository::class);
+
+        $this->app->bind(PromoCodeRepositoryInterface::class, PromoCodeRepository::class);
     }
 
     /**
