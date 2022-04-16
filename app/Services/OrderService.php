@@ -26,7 +26,7 @@ class OrderService
             $promo_code_id = $promoCode->id;
 
             if ($promo_code_discount > $grand_total) {
-                $$discount = $grand_total;
+                $discount = $grand_total;
             } else {
                 $discount = $promo_code_discount;
             }

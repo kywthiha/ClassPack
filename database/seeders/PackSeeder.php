@@ -13,6 +13,6 @@ class PackSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Pack::factory(50)->create();
+        \App\Models\Pack::factory(10)->create();
     }
 }
