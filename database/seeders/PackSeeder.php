@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class PackSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -13,6 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([PackSeeder::class]);
+        \App\Models\Pack::factory(50)->create();
     }
 }
