@@ -35,8 +35,8 @@ class UserController extends Controller
 
         if (!Auth::attempt($request->validated()))
             return response()->json([
-                'message' => 'Unauthorized'
-            ], Response::HTTP_UNAUTHORIZED);
+                'message' => 'These credentials do not match our records.'
+            ], Response::HTTP_FORBIDDEN);
 
         $user = $this->userRepository->login($request->user());
 
