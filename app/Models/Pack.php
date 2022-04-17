@@ -22,11 +22,6 @@ class Pack extends Model
         'PACK_TYPE_UNLIMITED' => self::PACK_TYPE_UNLIMITED,
     ];
 
-    const PACK_ALIAS = [
-        1 => 'single-pack',
-        0 => 'unlimited-pack',
-    ];
-
     const TAG_NAME = [
         'New',
         'Limited',
@@ -57,19 +52,6 @@ class Pack extends Model
 
     public $incrementing = false;
 
-    private function getPackAlias()
-    {
-        if (isset(self::PACK_ALIAS[$this->total_credit])) {
-            return self::PACK_ALIAS[$this->total_credit];
-        }
-
-        if ($this->pack_type == self::PACK_TYPE_SHAREABLE) {
-            return "share-pack-{$this->total_credit}";
-        }
-
-        return "pack-{$this->total_credit}";
-    }
-
     public static function boot()
     {
         parent::boot();
@@ -77,7 +59,6 @@ class Pack extends Model
             $model->pack_id = Str::uuid()->toString();
             $model->disp_order = $model->max('disp_order') + 1;
             $model->estimate_price = $model->total_credit ? round($model->pack_price / $model->total_credit, 2) : $model->total_credit;
-            $model->pack_alias = $model->getPackAlias();
         });
     }
 }
